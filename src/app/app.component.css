@@ -1,3 +1,18 @@
+.col {
+    width: 100px;
+}
+
+#logo a {
+    text-decoration: none;
+    color: black;
+}
+
+#profile a {
+    text-decoration: none;
+    color: black;
+    float: right;
+}
+
 footer {
     z-index: 100;
     position: fixed;
