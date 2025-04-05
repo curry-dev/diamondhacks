@@ -1,1 +1,43 @@
-<p>plantrip works!</p>
+<div class="container d-flex flex-column justify-content-center align-items-center">
+
+    <div class="row">
+        <div class="col align-items-center text-center mt-5">
+            <p>Devankshi you go where you want to go!</p>
+            <p>I'll protect you.</p>
+        </div>  
+    </div>
+
+    <div class="row fillform my-5">
+        <div class="col">
+            <p>Where to?</p>
+            <input type="text" [formControl]="whereto">
+        </div>
+
+        <div class="col">
+            <p>Budget?</p>
+            <input type="text" [formControl]="budget">
+        </div>
+
+        <div class="col">
+            <p>Number of people?</p>
+            <input type="text" [formControl]="numpeople">
+        </div>
+
+        <div class="col-auto my-auto">
+            <button (click)="getTrip()" id="submitForm" class="btn-3d">Get Route</button>
+        </div>
+    </div>
+
+    <div class="row" style="display: block;">
+        <div class="col">
+            <p>Itinerary:</p>
+        </div>
+    </div>
+
+    <div class="row" id="map" style="display: block;">
+        <div class="col">
+            <p>Map</p>
+        </div>
+    </div>
+
+</div>
