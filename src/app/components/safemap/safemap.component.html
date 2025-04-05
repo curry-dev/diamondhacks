@@ -18,7 +18,12 @@
 
     <div class="row" id="map">
         <div class="col">
-            map
+            <!-- <gmp-map center="34.027435302734375,-118.28858184814453" zoom="14" map-id="DEMO_MAP_ID">
+                <gmp-advanced-marker position="34.027435302734375,-118.28858184814453" title="My location"></gmp-advanced-marker>
+            </gmp-map> -->
+            <google-map height="400px" width="750px" [center]="center" [zoom]="zoom">
+            </google-map>
+            hello
         </div>
     </div>
 
