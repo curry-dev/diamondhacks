@@ -1,17 +1,37 @@
-.col {
+/* .col {
     width: 100px;
-}
+} */
 
 #logo a {
     text-decoration: none;
     color: black;
 }
 
-#profile a {
+#profile {
+    text-align: end;
+}
+
+#profile-name {
     text-decoration: none;
     color: black;
-    float: right;
 }
+
+/* #officer {
+    position: absolute;
+    bottom: -250px;
+    animation: slideUp 2s linear forwards;
+    animation-iteration-count: infinite;
+}
+
+@keyframes slideUp {
+    from {
+      bottom: -250px;
+    }
+    to {
+      bottom: -150px;
+    }
+} */
+  
 
 footer {
     z-index: 100;
@@ -24,3 +44,78 @@ footer {
     display: flex;
     justify-content: center;
 }
+
+
+
+
+
+
+
+/* #container {
+    position: relative;
+  } */
+  
+  /* .officer {
+    position: absolute;
+    right: -100px;
+    width: 100px;
+    height: 300px;
+    background: url('https://img.freepik.com/premium-psd/cartoon-boy-dressed-as-police-officer_1094163-62341.jpg') no-repeat center/cover;
+    animation: moveOfficer 1s linear infinite;
+  } */
+
+  /* first go up */
+  .officer-top {
+    bottom: -200px;
+    animation: moveUp 1s linear infinite;
+    animation: flip1 1s linear infinite;
+    animation-delay: 0s;
+    left: 300px;
+  }
+  @keyframes moveUp {
+    0% {
+      bottom: -300px;
+    }
+    50% {
+      bottom: -250px;
+    }
+    100% {
+      bottom: -200px;
+    }
+  }
+
+  @keyframes flip1 {  
+    0% { display: none; }
+    50% { display: block; }
+    99% { display: block; }
+    100% { display: block; }
+  }
+
+
+
+  @keyframes flip2 {  
+    0% { display: block; }
+    50% { display: block; }
+    99% { display: block; }
+    100% { display: none; }
+  }
+
+  .officer-bottom {
+    bottom: -200px;
+    animation: moveDown 1s linear infinite;
+    /* animation: flip2 1s linear infinite; */
+    animation-delay: 0s;
+    left: 300px;
+  }
+  @keyframes moveDown {
+    0% {
+      bottom: -200px;
+    }
+    50% {
+      bottom: -250px;
+    }
+    100% {
+      bottom: -300px;
+    }
+  }
+  

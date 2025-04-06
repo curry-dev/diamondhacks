@@ -1,43 +1,26 @@
 <div class="container d-flex flex-column justify-content-center align-items-center">
 
-    <div class="row">
-        <div class="col align-items-center text-center mt-5">
-            <p>Devankshi you go where you want to go!</p>
-            <p>I'll protect you.</p>
-        </div>  
+    <div class="form-group d-flex flex-row align-items-center gap-2 my-4 flex-wrap">
+      <div class="d-flex flex-column align-items-start">
+        <label class="mb-1">Where to?</label>
+        <input type="text" [formControl]="whereto" class="form-control" style="width: 200px;" />
+      </div>
+  
+      <div class="d-flex flex-column align-items-start">
+        <label class="mb-1">Budget?</label>
+        <input type="text" [formControl]="budget" class="form-control" style="width: 200px;" />
+      </div>
+
+      <div class="d-flex flex-column align-items-start">
+        <label class="mb-1">How many people?</label>
+        <input type="text" [formControl]="numpeople" class="form-control" style="width: 200px;" />
+      </div>
+  
+      <button (click)="getTrip()" class="btn-3d mt-4">Go</button>
     </div>
-
-    <div class="row fillform my-5">
-        <div class="col">
-            <p>Where to?</p>
-            <input type="text" [formControl]="whereto">
-        </div>
-
-        <div class="col">
-            <p>Budget?</p>
-            <input type="text" [formControl]="budget">
-        </div>
-
-        <div class="col">
-            <p>Number of people?</p>
-            <input type="text" [formControl]="numpeople">
-        </div>
-
-        <div class="col-auto my-auto">
-            <button (click)="getTrip()" id="submitForm" class="btn-3d">Get Route</button>
-        </div>
-    </div>
-
-    <div class="row" style="display: block;">
-        <div class="col">
-            <p>Itinerary:</p>
-        </div>
-    </div>
-
-    <div class="row" id="map" style="display: block;">
-        <div class="col">
-            <p>Map</p>
-        </div>
-    </div>
-
+  
+    <google-map height="500px" width="80vw" [center]="center" [zoom]="zoom">
+      <map-directions-renderer *ngIf="directionsResults" [directions]="directionsResults"></map-directions-renderer>
+    </google-map>
+  
 </div>

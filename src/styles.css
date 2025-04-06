@@ -1,12 +1,12 @@
 .btn-3d {
     background: #56d3d7;
     color: white;
-    padding: 12px 24px;
+    padding: 5px 24px;
     text-align: center;
     text-decoration: none;
     border-radius: 10px;
     box-shadow: 0 5px 0 #3abaaf;
-    font-weight: bold;
+    /* font-weight: bold; */
     transition: all 0.1s ease-in-out;
     position: relative;
     display: inline-block;

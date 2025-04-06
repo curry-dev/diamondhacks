@@ -1,31 +1,30 @@
 <div class="container d-flex flex-column justify-content-center align-items-center">
 
-    <div class="row fillform my-5">
-        <div class="col">
-            <p>Where from?</p>
-            <input type="text" [formControl]="wherefrom">
-        </div>
-
-        <div class="col">
-            <p>Where to?</p>
-            <input type="text" [formControl]="whereto">
-        </div>
-
-        <div class="col-auto my-auto">
-            <button (click)="getRoute()" id="submitForm" class="btn-3d">Get Route</button>
-        </div>
+    <div class="form-group d-flex flex-row align-items-center gap-2 my-4 flex-wrap">
+      <div class="d-flex flex-column align-items-start">
+        <label class="mb-1">Where from?</label>
+        <input type="text" [formControl]="wherefrom" class="form-control" style="width: 200px;" />
+      </div>
+  
+      <div class="d-flex flex-column align-items-start">
+        <label class="mb-1">Where to?</label>
+        <input type="text" [formControl]="whereto" class="form-control" style="width: 200px;" />
+      </div>
+  
+      <button (click)="getRoute()" class="btn-3d mt-4">Go</button>
     </div>
+  
+    <google-map height="500px" width="80vw" [center]="center" [zoom]="zoom">
+      <map-directions-renderer *ngIf="directionsResults" [directions]="directionsResults"></map-directions-renderer>
+    </google-map>
+  
 
-    <div class="row" id="map">
-        <div class="col">
-            <!-- <gmp-map center="34.027435302734375,-118.28858184814453" zoom="14" map-id="DEMO_MAP_ID">
-                <gmp-advanced-marker position="34.027435302734375,-118.28858184814453" title="My location"></gmp-advanced-marker>
-            </gmp-map> -->
-            <google-map height="400px" width="750px" [center]="center" [zoom]="zoom">
-            </google-map>
-            hello
-        </div>
-    </div>
+
+    <!-- <google-map height="75vh" width="80vw" [center]="{lat: latitude, lng: longitude}" [zoom]="14">
+        <map-marker [position]="{lat: latitude, lng: longitude}"></map-marker>
+    </google-map> -->
+
+
 
     <!-- TODO: make an about page -->
     <!-- <div class="row">

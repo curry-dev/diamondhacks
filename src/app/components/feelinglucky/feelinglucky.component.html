@@ -1,1 +1,26 @@
-<p>feelinglucky works!</p>
+<div class="container d-flex flex-column justify-content-center align-items-center">
+
+    <div class="form-group d-flex flex-row align-items-center gap-2 my-4 flex-wrap">
+      <div class="d-flex flex-column align-items-start">
+        <label class="mb-1">Where to?</label>
+        <input type="text" [formControl]="whereto" class="form-control" style="width: 200px;" />
+      </div>
+  
+      <div class="d-flex flex-column align-items-start">
+        <label class="mb-1">Budget?</label>
+        <input type="text" [formControl]="budget" class="form-control" style="width: 200px;" />
+      </div>
+
+      <div class="d-flex flex-column align-items-start">
+        <label class="mb-1">How many people?</label>
+        <input type="text" [formControl]="numpeople" class="form-control" style="width: 200px;" />
+      </div>
+  
+      <button (click)="getTrip()" class="btn-3d mt-4">Go</button>
+    </div>
+  
+    <google-map height="500px" width="80vw" [center]="center" [zoom]="zoom">
+      <map-directions-renderer *ngIf="directionsResults" [directions]="directionsResults"></map-directions-renderer>
+    </google-map>
+  
+</div>
