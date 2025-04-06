@@ -9,18 +9,25 @@
       <div class="d-flex flex-column align-items-start">
         <label class="mb-1">Budget?</label>
         <input type="text" [formControl]="budget" class="form-control" style="width: 200px;" />
-      </div>
-
-      <div class="d-flex flex-column align-items-start">
-        <label class="mb-1">How many people?</label>
-        <input type="text" [formControl]="numpeople" class="form-control" style="width: 200px;" />
-      </div>
+      </div>      
   
-      <button (click)="getTrip()" class="btn-3d mt-4">Go</button>
+      <button (click)="getTrip(whereto.value, budget.value)" class="btn-3d mt-4">Go</button>
     </div>
   
     <google-map height="500px" width="80vw" [center]="center" [zoom]="zoom">
       <map-directions-renderer *ngIf="directionsResults" [directions]="directionsResults"></map-directions-renderer>
     </google-map>
+
+
+
+    <div *ngIf="itinerary">
+      <div *ngFor="let day of objectKeys(itinerary)">
+        <div *ngFor="let time of objectKeys(itinerary[day])" class="mb-5">
+            <strong>Activity:</strong> {{ itinerary[day][time].activity }} <br>
+            <strong>Cost:</strong> {{ itinerary[day][time].cost }} <br>
+            <strong>Description:</strong> {{ itinerary[day][time].description }}
+        </div>
+      </div>
+    </div>
   
 </div>

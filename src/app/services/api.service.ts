@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor() { }
-  // constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
-  // getCalc(from: string, to: string) {
-  //   return this._http.post<{ response: string, chosen_city: string[] }>('http://localhost:4200/calculate', { from: from, to: to });
-  // }
+  getCalc(whereto: string, budget: number) {
+    return this._http.post('http://localhost:5001/calculate', { whereto: whereto, budget: budget });
+  }
+
+  getUser() {
+    console.log('getUser() called');
+    return this._http.get('http://localhost:5001/get_user');
+  }
 }
