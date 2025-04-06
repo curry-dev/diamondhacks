@@ -120,6 +120,10 @@ export class FeelingluckyComponent implements OnInit {
     window.open(this.hotel_search_url, '_blank');
   }
 
+  save() {
+    this._apiservice.saveTrip(this.itinerary).subscribe();
+  }
+
   // async getCrimes() {
   //   this.crimes = await firstValueFrom(this._apiservice.getCrimes());
   // }

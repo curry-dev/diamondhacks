@@ -107,6 +107,10 @@ export class PlantripComponent implements OnInit {
     });
   }
 
+  save() {
+    this._apiservice.saveTrip(this.itinerary).subscribe();
+  }
+
   async ngOnInit() {
     await this.getCrimes();
     this.addMarkers();

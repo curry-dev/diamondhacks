@@ -19,4 +19,8 @@ export class ApiService {
   getCrimes() {
     return this._http.get('http://localhost:5001/get_crimes');
   }
+
+  saveTrip(itinerary: object) {
+    return this._http.post('http://localhost:5001/save', { itinerary: itinerary });
+  }
 }

@@ -13,7 +13,7 @@ MONGODB_URI = os.environ['MONGODB_URI']
 mongoclient = MongoClient(MONGODB_URI)
 db = mongoclient['safestreets']
 collection = db['users']
-# user = collection.find_one({'_id': ObjectId('67f2131fe0ada19c46a3b9d3')})
+user = collection.find_one({'_id': ObjectId('67f2131fe0ada19c46a3b9d3')})
 
 app = Flask(__name__)
 
@@ -54,7 +54,7 @@ def get_user():
     print('user:', user)
     user['_id'] = str(user['_id'])
     user['home_city'] = user['home_city']
-    user['search_history'] = user['search_history']
+    user['saved_trips'] = user['saved_trips']
     return user, 200
 
 
@@ -76,6 +76,16 @@ def get_crimes():
     crimes = json.loads(crimesString.strip()[:-1])
     return crimes
 
+
+@app.route('/save', methods=['POST'])
+@cross_origin()
+def save():
+    data = request.json
+    collection.update_one(
+        {'_id': ObjectId('67f2131fe0ada19c46a3b9d3')},
+        {'$push': {'saved_trips': data['itinerary']}}
+    )
+    return {'updated': data}, 200
 
 
 if __name__ == '__main__':
