@@ -3,6 +3,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { CommonModule } from '@angular/common';
 import { GoogleMapsModule, MapDirectionsService } from '@angular/google-maps';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-safemap',
@@ -16,13 +17,30 @@ import { GoogleMapsModule, MapDirectionsService } from '@angular/google-maps';
   templateUrl: './safemap.component.html',
   styleUrl: './safemap.component.css'
 })
+
 export class SafemapComponent implements OnInit {
   wherefrom = new FormControl('');
   whereto = new FormControl('');
+  crimes: any = [];
 
-  center = { lat: 40.712776, lng: -74.005974 };
+  center = { lat: 34.044727, lng: -118.249283 };
   zoom = 15;
   directionsResults?: google.maps.DirectionsResult;
+  markers: any[] = [];
+  roadblocks: any[] = [];
+  alternatePoints: any[] = [];
+
+  // roadblocks = [
+  //   { lat: 34.045, lng: -118.25 },
+  //   { lat: 34.043, lng: -118.248 }
+  // ];
+  
+  // alternatePoints = [
+  //   { lat: 34.047, lng: -118.246 },
+  //   { lat: 34.042, lng: -118.244 }
+  // ];
+  
+  
 
 
 
@@ -31,28 +49,14 @@ export class SafemapComponent implements OnInit {
     private directionsService: MapDirectionsService
   ) {}
 
-  ngOnInit() {
-    this.getCurrentLocation();
-  }
-
-  getCurrentLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.center = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-      }, error => {
-        console.error('Error getting location:', error);
-      });
-    } else {
-      alert('Geolocation is not supported by this browser.');
-    }
-  }
-
   getRoute() {
     const origin = this.wherefrom.value;
     const destination = this.whereto.value;
+
+    this.crimes.forEach((crime: { lat: any; lon: any; }) => {
+      this.roadblocks.push({ lat: crime.lat, lng: crime.lon });
+      // this.alternatePoints.push({ lat: crime.lat - 0.005, lng: crime.lon + 0.005 });
+    });
 
     if (!origin || !destination) {
       alert('Please enter both origin and destination.');
@@ -64,6 +68,7 @@ export class SafemapComponent implements OnInit {
         origin: origin,
         destination: destination,
         travelMode: google.maps.TravelMode.DRIVING,
+        provideRouteAlternatives: true
       })
       .subscribe({
         next: (response) => {
@@ -73,5 +78,24 @@ export class SafemapComponent implements OnInit {
           console.error('Error fetching directions:', error);
         }
       });
+  }
+
+
+
+  async getCrimes() {
+    this.crimes = await firstValueFrom(this._apiservice.getCrimes());
+  }
+    
+  addMarkers() {
+    this.crimes.forEach((crime: { lat: any; lon: any; }) => {
+      this.markers.push({
+        position: { lat: crime.lat, lng: crime.lon }
+      });
+    });
+  }
+
+  async ngOnInit() {
+    await this.getCrimes();
+    this.addMarkers();
   }
 }

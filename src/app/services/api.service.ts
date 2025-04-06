@@ -13,7 +13,10 @@ export class ApiService {
   }
 
   getUser() {
-    console.log('getUser() called');
     return this._http.get('http://localhost:5001/get_user');
+  }
+
+  getCrimes() {
+    return this._http.get('http://localhost:5001/get_crimes');
   }
 }

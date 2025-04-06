@@ -2,6 +2,10 @@
     width: 100px;
 } */
 
+.container {
+  position: relative;
+}
+
 #logo a {
     text-decoration: none;
     color: black;
@@ -47,7 +51,11 @@ footer {
 
 
 
-
+#profile {
+  background: url('assets/pfp.jpeg');
+  /* width: 15px;
+  height: auto; */
+}
 
 
 
@@ -55,32 +63,36 @@ footer {
     position: relative;
   } */
   
-  /* .officer {
+  .officer, .touristy, .gambler {
     position: absolute;
-    right: -100px;
-    width: 100px;
+    left: 600px;
+    bottom: -300px;
     height: 300px;
-    background: url('https://img.freepik.com/premium-psd/cartoon-boy-dressed-as-police-officer_1094163-62341.jpg') no-repeat center/cover;
-    animation: moveOfficer 1s linear infinite;
-  } */
+    width: auto;
+    background: url('assets/officer.png') no-repeat center/cover;
+    animation-delay: 0s;
+  }
+
+  .touristy {
+    left: 750px;
+    background: url('assets/tourist.png') no-repeat center/cover;
+  }
+
+  .gambler {
+    left: 900px;
+    background: url('assets/gambler.png') no-repeat center/cover;
+  }
 
   /* first go up */
   .officer-top {
-    bottom: -200px;
-    animation: moveUp 1s linear infinite;
-    animation: flip1 1s linear infinite;
-    animation-delay: 0s;
-    left: 300px;
+    animation: moveUp 1s linear forwards;
   }
   @keyframes moveUp {
     0% {
       bottom: -300px;
     }
-    50% {
-      bottom: -250px;
-    }
     100% {
-      bottom: -200px;
+      bottom: -100px;
     }
   }
 
@@ -91,8 +103,6 @@ footer {
     100% { display: block; }
   }
 
-
-
   @keyframes flip2 {  
     0% { display: block; }
     50% { display: block; }
@@ -101,18 +111,11 @@ footer {
   }
 
   .officer-bottom {
-    bottom: -200px;
-    animation: moveDown 1s linear infinite;
-    /* animation: flip2 1s linear infinite; */
-    animation-delay: 0s;
-    left: 300px;
+    animation: moveDown 1s linear forwards;
   }
   @keyframes moveDown {
     0% {
-      bottom: -200px;
-    }
-    50% {
-      bottom: -250px;
+      bottom: -100px;
     }
     100% {
       bottom: -300px;
