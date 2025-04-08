@@ -40,7 +40,7 @@ export class FeelingluckyComponent implements OnInit {
   hotel_url = 'https://serpapi.com/search.json?engine=google&q=Coffee&location=San+Francisco+Bay+Area%2C+California%2C+United+States&google_domain=google.com&gl=us&hl=en&api_key=cae937bd4ea5eb65c1ddbdb294e225109043846523b052e321cc4837ddc8611a'
   flight_data: object = {};
   hotel_data: object = {};
-  flight_lowest_price: number = 0;
+  flight_lowest_price: number = 57;
   tmp: any = {};
   flight_search_url: string = 'https://www.google.com/travel/flights';
   tmp1: any = {};
